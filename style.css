@@ -1,0 +1,237 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;600;800&display=swap');
+
+:root {
+--DarkBlue: hsl(209, 23%, 22%); /*(Dark Mode Elements)*/
+--DarkBlueOnHover: hsl(209, 23%, 50%);
+--VeryDarkBlue: hsl(207, 26%, 17%); /*(Dark Mode Background)*/
+--VeryDarkBlue:  hsl(200, 15%, 8%); /*(Light Mode Text)*/
+--DarkGray: hsl(0, 0%, 52%); /*(Light Mode Input*/
+--VeryLightGray: hsl(0, 0%, 98%); /*(Light Mode Background)*/
+--White: hsl(0, 0%, 100%); /*(Dark Mode Text & Light Mode Elements)*/
+}
+.hidden {
+    display: none !important;
+}
+h2 {
+    color: white;
+    font-size: 2.5rem;
+    margin: 0;
+}
+* {
+    box-sizing: border-box;
+}
+body {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    background-color: var(--VeryDarkBlue);
+    font-family: 'Nunito Sans', sans-serif;
+}
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--DarkBlue);
+    padding: 0 80px;
+    height: 65px;
+    position: relative;
+}
+nav div {
+    font-weight: 800;
+    font-size: 22px;
+    color: var(--White);
+}
+#theme, #theme::after, #theme::before {
+    font-weight: 300;
+    font-size: 16px;
+    color: var(--White);
+    background-color: var(--DarkBlue);
+    cursor: pointer;
+    border: none;
+}
+.info-container {
+    display: flex;
+    height: 100px;
+    background-color: var(--VeryDarkBlue);
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 80px;
+    margin: 30px 0;
+}
+#countrySearch {
+    position: relative;
+    background-color: var(--DarkBlue);
+    width: 300px;
+    border-radius: 2px;
+    height: 50px;
+    border: none;
+    outline: none;
+    color: var(--White);
+    font-size: 1rem;
+}
+#searchIcon {
+    position: absolute;
+    z-index: 1;
+    color: var(--White);
+    font-size: 25px;
+    left: 340px;
+}
+.filterRegion {
+    position: relative;
+    height: 50px;
+    width: 150px;
+    background-color: var(--DarkBlue);
+    border-radius: 2px;
+    line-height: 50px;
+    color: var(--White);
+    cursor: pointer;
+}
+#toggleBtn {
+    position: absolute;
+    top: 20px;
+    right: 12.5px;
+}
+.region {
+    display: block;
+    background-color: var(--DarkBlue);
+    text-align: center;
+}
+.region:hover {
+    background-color: var(--DarkBlueOnHover);
+}
+.countries-list {
+    display: flex;
+    flex-direction: row;
+    list-style-type: none;
+    background-color: var(--VeryDarkBlue);
+    padding: 0 80px;
+    flex-wrap: wrap;
+}
+.country {
+    display: flex;
+    flex-direction: column;
+    height: 400px;
+    width: 300px;
+    background-color: var(--DarkBlue);
+    margin: 0 30px 30px 0;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.flag {
+    height: 200px;
+    border-radius: 5px;
+    width: 100%;
+}
+.countryName {
+    font-size: 1.8rem;
+    color: var(--White);
+    margin: 15px 5px;
+}
+
+.country-info {
+    color: silver;
+    font-weight: 300;
+    font-size: 1.2rem;
+}
+.detailed-info {
+    position: absolute;
+    top: 80px;
+    left: 0;
+    background-color: var(--VeryDarkBlue);
+    height: 100%;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 80px;
+    display: flex;
+}
+.flagTwo {
+    width: 550px;
+    height: 400px;
+}
+
+.country-span-container {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    background-color: var(--VeryDarkBlue);
+    width: 650px;
+    height: 400px;
+}
+
+.countrySpan {
+    font-weight: 800;
+    font-size: 1.2rem;
+    color: white;
+    margin: 5px 15px;
+    padding: 10px 5px;
+    width: 30%;
+}
+
+.backbutton {
+    background-color: var(--DarkBlue);
+    padding: 10px 30px;
+    border-radius: 10px;
+    position: absolute;
+    cursor: pointer;
+    top: 80px;
+    left: 80px;
+    z-index: 1;
+    outline: none;
+    border: none;
+}
+
+.borderCountry {
+    display: inline-block;
+    margin: auto 5px;
+    color: silver;
+    font-weight: 700;
+}
+.border-container {
+    position: absolute;
+    bottom: 20%;
+    font-weight: 800;
+    font-size: 1rem;
+    color: white;
+    margin: 5px 15px;
+}
+.countrySpanShort {
+    display: block;
+    margin: 10px 20px;
+    font-size: 1.4rem;
+    font-weight: 600;
+}
+.short-info {
+    display: block;
+}
+
+@media(max-width: 650px) {
+    .info-container {
+        display: block;
+    }
+    #countrySearch {
+        margin-bottom: 20px;
+    }
+    .detailed-info, .country-span-container {
+        display: block;
+    }
+    .country-span-container {
+        width: 100%;
+    }
+    .flagTwo {
+        width: 100%;
+        height: 250px;
+        margin-top: 50px;
+    }
+    .country-info, .countrySpan {
+        display: inline-block;
+        font-size: 0.8rem;
+    }
+    .backbutton {
+        top: 0;
+    }
+    #searchIcon {
+        transform: translateY(12.5px);
+    }
+
+}

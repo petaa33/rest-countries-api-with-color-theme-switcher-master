@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="light.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+     crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Rest countries API with color theme switcher master</title>
+</head>
+<body>
+    <nav>
+        <div>Where in the world?</div>
+        <button id="theme"><i class="fas fa-moon"></i> Dark mode</button>
+    </nav>
+    <div class="info-container">
+      <i class="fas fa-search" id="searchIcon"></i>
+      <input type="text" placeholder="Search for a country..." id="countrySearch">
+      <div class="filterRegion">
+          Filter by Region
+          <i class="fas fa-chevron-up" id="toggleBtn"></i>
+          <span class="region hidden">Africa</span>
+          <span class="region hidden">America</span>
+          <span class="region hidden">Asia</span>
+          <span class="region hidden">Europe</span>
+          <span class="region hidden">Oceania</span>
+      </div>
+    </div>
+
+    <ul class="countries-list">
+        
+    </ul>
+<script src="script.js"></script>
+</body>
+</html>
