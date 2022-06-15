@@ -9,7 +9,7 @@ const searchIcon = document.getElementById('searchIcon');
 
 const API_URL = "https://restcountries.com/v2/all";
 
-async function GetCountryData() {
+async function getCountryData() {
     const res = await fetch(API_URL);
     const data = await res.json();
     for(let i = 0; i < data.length; i++) {
@@ -17,49 +17,70 @@ async function GetCountryData() {
         li.classList.add('country');
         countryArray.push(li);
         li.innerHTML = `
-        <div class="short-info">
-          <img src="${data[i].flag}" alt="${data[i].name}" class="flag">
-          <span class="countryName"><strong>${data[i].name}</strong></span>
-          <span class="countrySpanShort">Population: <span id="population">${data[i].population.toLocaleString('en-US')}</span></span>
-          <span class="countrySpanShort">Region: <span id="region">${data[i].region}</span></span>
-          <span class="countrySpanShort">Capital: <span id="capital">${data[i].capital}</span></span>
-        </div>
-        <div class="detailed-info hidden">
-           <button class="backbutton">
-              <i class="fas fa-arrow-left"></i>Back
-           </button>
-          <img src="${data[i].flag}" alt="${data[i].name}" class="flagTwo">
-          <div class="country-span-container">
-            <h2>${data[i].name}</h2>
-            <span class="countrySpan">Native name: <span class="country-info">${data[i].name}</span></span>
-            <span class="countrySpan">Population: <span class="country-info">${data[i].population.toLocaleString('en-US')}</span></span>
-            <span class="countrySpan">Region: <span class="country-info">${data[i].region}</span></span>
-            <span class="countrySpan">Subregion: <span class="country-info">${data[i].subregion}</span></span>
-            <span class="countrySpan">Capital: <span class="country-info">${data[i].capital}</span></span>
-            <span class="countrySpan">Top level domain: <span class="country-info">${data[i].topLevelDomain[0]}</span></span>
-            <span class="countrySpan">Currencies: <span class="country-info">${data[i].hasOwnProperty('currencies') ? data[i].currencies.map((currency)=>{
-                return currency.code + " " + currency.name;
-            }).join(" ") : "No currency"} </span></span>
-            <span class="countrySpan">Languages: <span class="country-info">${data[i].languages.map((language)=>{
-                return language.name;
-            }).join(" ")}</span></span>
-            <span class="border-container">Border countries: <span class="country-info"><span class = "borderCountry">${data[i].hasOwnProperty('borders') ? data[i].borders.map((border)=>{
-                return border;
-            }).join(" "): "No borders" }</span></span></span>
-           </div>
-        </div>`
+        ${setShortInfo(data[i])}
+        ${setDetailedInfo(data[i])} 
+        `
         li.addEventListener('click', ()=>{
-            GetDetails(i);
+            getDetails(i);
         })
         countries.appendChild(li);
     }
 }
-GetCountryData();
+
+//Set Short info & Detailefd info
+function setShortInfo(data){
+    return `
+    <div class="short-info">
+          <img src="${data.flag}" alt="${data.name}" class="flag">
+          <span class="countryName"><strong>${data.name}</strong></span>
+          <span class="countrySpanShort">Population: <span id="population">${data.population.toLocaleString('en-US')}</span></span>
+          <span class="countrySpanShort">Region: <span id="region">${data.region}</span></span>
+          <span class="countrySpanShort">Capital: <span id="capital">${data.capital}</span></span>
+        </div>
+        `
+}
+function setDetailedInfo(data) {
+    return `
+    <div class="detailed-info hidden">
+           <button class="backbutton">
+              <i class="fas fa-arrow-left"></i>Back
+           </button>
+          <img src="${data.flag}" alt="${data.name}" class="flagTwo">
+          <div class="country-span-container">
+            <h2>${data.name}</h2>
+            <span class="countrySpan">Native name: <span class="country-info">${data.name}</span></span>
+            <span class="countrySpan">Population: <span class="country-info">${data.population.toLocaleString('en-US')}</span></span>
+            <span class="countrySpan">Region: <span class="country-info">${data.region}</span></span>
+            <span class="countrySpan">Subregion: <span class="country-info">${data.subregion}</span></span>
+            <span class="countrySpan">Capital: <span class="country-info">${data.capital}</span></span>
+            <span class="countrySpan">Top level domain: <span class="country-info">${data.topLevelDomain[0]}</span></span>
+            <span class="countrySpan">Currencies: <span class="country-info">${data.hasOwnProperty('currencies') ? data.currencies.map((currency)=>{
+                return currency.code + " " + currency.name;
+            }).join(" ") : "No currency"} </span></span>
+            <span class="countrySpan">Languages: <span class="country-info">${data.languages.map((language)=>{
+                return language.name;
+            }).join(" ")}</span></span>
+            <span class="border-container">Border countries: <span class="country-info"><span class = "borderCountry">${data.hasOwnProperty('borders') ? data.borders.map((border)=>{
+                return border;
+            }).join(" "): "No borders" }</span></span></span>
+           </div>
+        </div>`
+}
+
+// Onclick displays detailed info about country 
+function getDetails(x){
+    countryArray[x].children[1].classList.toggle('hidden');
+    searchIcon.classList.toggle('hidden');
+    scroll(0,0)
+}
+
+getCountryData();
+
 //Input Filter
 countrySearch.addEventListener('input', (country) => {
-    FilterCountry(country.target.value);
+    filterCountry(country.target.value);
 })
-function FilterCountry(country) {
+function filterCountry(country) {
     countryArray.forEach(countryX => {
         if(countryX.innerText.toLowerCase().includes(country.toLowerCase())) {
             countryX.classList.remove('hidden');
@@ -71,26 +92,19 @@ function FilterCountry(country) {
 filter.addEventListener('click', ()=>{
     region.forEach((regionX) => {
         regionX.addEventListener('click', ()=>{
-            FilterByRegion(regionX.innerHTML);
+            filterByRegion(regionX.innerHTML);
         })    
         regionX.classList.toggle('hidden');
         filter.classList.toggle('active');
     });
 });
 
-function FilterByRegion(regionX) {
+function filterByRegion(regionX) {
     countryArray.forEach(countryX =>{
         if(!countryX.innerText.includes(regionX)) {
             countryX.classList.add('hidden');
         } else countryX.classList.remove('hidden');
     });
-}
-
-// Detailed info about country 
-function GetDetails(x){
-    countryArray[x].children[1].classList.toggle('hidden');
-    searchIcon.classList.toggle('hidden');
-    scroll(0,0)
 }
 
 // Theme change function
@@ -100,3 +114,4 @@ themeButton.addEventListener('click', ()=>{
     lightTheme ? theme.setAttribute('href', 'style.css') : theme.setAttribute('href', 'light.css');
     lightTheme = !lightTheme; 
 })
+
