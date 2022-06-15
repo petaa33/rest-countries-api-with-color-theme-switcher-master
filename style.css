@@ -41,7 +41,7 @@ nav div {
     font-size: 22px;
     color: var(--White);
 }
-#theme, #theme::after, #theme::before {
+#theme {
     font-weight: 300;
     font-size: 16px;
     color: var(--White);

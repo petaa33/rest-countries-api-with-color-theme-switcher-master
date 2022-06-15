@@ -33,9 +33,9 @@ function setShortInfo(data){
     <div class="short-info">
           <img src="${data.flag}" alt="${data.name}" class="flag">
           <span class="countryName"><strong>${data.name}</strong></span>
-          <span class="countrySpanShort">Population: <span id="population">${data.population.toLocaleString('en-US')}</span></span>
-          <span class="countrySpanShort">Region: <span id="region">${data.region}</span></span>
-          <span class="countrySpanShort">Capital: <span id="capital">${data.capital}</span></span>
+          <span class="countrySpanShort">Population: ${data.population.toLocaleString('en-US')}</span>
+          <span class="countrySpanShort">Region: ${data.region}</span>
+          <span class="countrySpanShort">Capital: ${data.capital}</span>
         </div>
         `
 }
