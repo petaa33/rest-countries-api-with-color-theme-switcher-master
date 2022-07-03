@@ -1,0 +1,37 @@
+:root {
+--DarkBlue: hsl(209, 23%, 22%); /*(Dark Mode Elements)*/
+--DarkBlueOnHover: hsl(209, 23%, 50%);
+--VeryDarkBlue: hsl(207, 26%, 17%); /*(Dark Mode Background)*/
+--White: hsl(0, 0%, 100%); /*(Dark Mode Text & Light Mode Elements)*/
+}
+
+body {
+    background-color: var(--VeryDarkBlue);
+}
+
+nav {
+    background-color: var(--DarkBlue);   
+    color: var(--White); 
+}
+
+.filterRegion, .region {
+    background-color: var(--DarkBlue);
+    color: var(--White); 
+}
+
+#theme {
+    background-color: var(--DarkBlue);
+    color: var(--White); 
+}
+.region:hover {
+    background-color: var(--DarkBlue);
+}
+
+.detailed-info {
+    background-color: var(--VeryDarkBlue);
+    color: var(--White); 
+}
+
+.short-info {
+    color: var(--White);
+}

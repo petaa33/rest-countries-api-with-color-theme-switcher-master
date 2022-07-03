@@ -110,8 +110,8 @@ function filterByRegion(regionX) {
 // Theme change function
 let lightTheme = true;
 themeButton.addEventListener('click', ()=>{
-    const theme = document.getElementsByTagName('link')[0];
-    lightTheme ? theme.setAttribute('href', 'style.css') : theme.setAttribute('href', 'light.css');
+    const theme = document.getElementsByTagName('link')[1];
+    lightTheme ? theme.setAttribute('href', 'dark.css') : theme.setAttribute('href', 'light.css');
     lightTheme = !lightTheme; 
 })
 
